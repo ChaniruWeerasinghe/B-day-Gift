@@ -78,37 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Custom Toast Notification System
-    const toastContainer = document.getElementById('toast-container');
-    let activeToasts = 0;
-
-    function showToast(message, icon = '🎉') {
-        // Prevent spamming
-        if (activeToasts >= 2) return;
-        
-        const toast = document.createElement('div');
-        toast.className = 'custom-toast';
-        toast.innerHTML = `<span class="icon">${icon}</span> <span>${message}</span>`;
-        
-        toastContainer.appendChild(toast);
-        
-        // Trigger reflow
-        void toast.offsetWidth;
-        toast.classList.add('show');
-        activeToasts++;
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => {
-                toast.remove();
-                activeToasts--;
-            }, 400);
-        }, 3000);
-    }
 
     // Button Interaction
     btn.addEventListener('click', () => {
         toggleConfetti();
-        showToast('Happy Birthday! Have a great one!', '✨');
     });
 });
